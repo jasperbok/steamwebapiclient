@@ -43,6 +43,30 @@ accessible methods will be available in the generated client code.
 After regenerating the client, its code must be formatted using
 [black](https://black.readthedocs.io/en/stable/index.html).
 
+## Making a Release
+
+Install `build` and `twine`:
+
+```shell
+pip install build twine
+```
+
+Create the build artifacts:
+
+```shell
+# Build the source distribution.
+python -m build --sdist
+
+# Build the wheel distribution.
+python -m build --wheel
+```
+
+Upload the build artifacts to PyPI:
+
+```shell
+python -m twine upload dist/*
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
