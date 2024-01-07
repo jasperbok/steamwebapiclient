@@ -44,3 +44,5 @@ After regenerating the client, its code must be formatted using
 [black](https://black.readthedocs.io/en/stable/index.html).
 
 ## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
