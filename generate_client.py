@@ -96,14 +96,9 @@ def generate_method_definition(interface: dict, method: dict) -> str:
     # parameters. Python needs required parameters to be defined before
     # optional parameters, so we sort them here.
     # TODO: The `key` and `steam_id` params should be made optional in Python, but not in API params.
-    ordered_params = []
-    for param in method["parameters"]:
-        if not param["optional"]:
-            ordered_params.append(param)
-    for param in method["parameters"]:
-        if param["optional"]:
-            ordered_params.append(param)
-    method["parameters"] = ordered_params
+    required_args = [param for param in method["parameters"] if not param["optional"]]
+    optional_args = [param for param in method["parameters"] if param["optional"]]
+    method["parameters"] = required_args + optional_args
 
     method_template = """
 def {name}({args}) -> dict:
